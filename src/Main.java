@@ -1,20 +1,28 @@
-import week1.ProgrammingAssignment.WordNet;
+import edu.princeton.cs.algs4.Picture;
+import week2.ProgrammingAssignment.SeamCarver;
+
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
-        WordNet wordNet = new WordNet("g.in", "a.in");
-        System.out.println(wordNet.distance("a", "a"));
-//        week1.ProgrammingAssignment.WordNet wordNet = new week1.ProgrammingAssignment.WordNet("synsets.in", "hypernyms.in");
-//        week1.ProgrammingAssignment.Outcast outcast = new week1.ProgrammingAssignment.Outcast(wordNet);
-//        String[] arr = StdIn.readLine().split(" ");
-//        System.out.println(outcast.outcast(arr));
-//        week1.ProgrammingAssignment.SAP sap = new week1.ProgrammingAssignment.SAP(new Digraph(new In("f.in")));
-//        while (!StdIn.isEmpty()) {
-//            int v = StdIn.readInt();
-//            int w = StdIn.readInt();
-//            int length   = sap.length(v, w);
-//            int ancestor = sap.ancestor(v, w);
-//            StdOut.printf("length = %d, ancestor = %d\n", length, ancestor);
+        Picture picture = new Picture(new File("6x5.png"));
+        SeamCarver seamCarver = new SeamCarver(picture);
+        int[][] a = new int[picture.width()][picture.height()];
+//        for (int i = 0; i < picture.height(); i++) {
+//            for (int j = 0; j < picture.width(); j++) {
+//                System.out.print("(" + j + "," + i + ")" + " ");
+//            }
+//            System.out.println();
 //        }
+//        for (int i = 0; i < picture.height(); i++) {
+//            for (int j = 0; j < picture.width(); j++) {
+//                System.out.print(seamCarver.energy(j,i) + " ");
+//            }
+//            System.out.println();
+//        }
+        for(int i = 0 ; i < 4; i++){
+            seamCarver.removeHorizontalSeam(seamCarver.findHorizontalSeam());
+            System.out.println(seamCarver.picture());
+        }
     }
 }
